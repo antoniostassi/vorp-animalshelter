@@ -133,6 +133,10 @@ Citizen.CreateThread( function()
 					TriggerServerEvent('kcrp:buydog', dogs[i]['Param'])
 					WarMenu.CloseMenu()
 				end
+				if WarMenu.Button("Fix your pet ( Buy another one )") then
+					TriggerServerEvent('kcrp:sellpet')
+					WarMenu.CloseMenu()
+				end
 			end
 			WarMenu.Display()
 		end

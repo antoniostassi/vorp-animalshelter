@@ -29,6 +29,16 @@ local function GetAmmoutdogs( Player_ID )
     end)
 end
 
+RegisterServerEvent('kcrp:sellpet')
+AddEventHandler('kcrp:sellpet', function()
+    TriggerEvent("vorp:getCharacter", source, function(user)
+        local playerid = user.identifier
+        local number = math.number(1, 100000)
+        exports.ghmattimysql:execute("UPDATE dogs SET identifier = @nil WHERE identifier = @identifier", {["identifier"] = playerid, ["nil"] = number})
+    end)
+
+end)
+
 RegisterServerEvent('kcrp:buydog')
 AddEventHandler( 'kcrp:buydog', function ( args )
 
