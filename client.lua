@@ -216,10 +216,13 @@ end
 
 Citizen.CreateThread( function()
 	WarMenu.CreateMenu('id_dog', 'Animal Shelter')
-	WarMenu.CreateSubMenu('fixdog', 'Fix Pet ( Before buying new one )')
 	repeat
 		if WarMenu.IsMenuOpened('id_dog') then
 			for i = 1, #dogs do
+				if WarMenu.Button("Fix Pet ( Before buying new one )") then
+					TriggerServerEvent('kcrp:sellpet')
+					WarMenu.CloseMenu()
+				end
 				if WarMenu.Button(dogs[i]['Text'], dogs[i]['SubText'], dogs[i]['Desc']) then
 					TriggerServerEvent('kcrp:buydog', dogs[i]['Param'])
 					WarMenu.CloseMenu()
@@ -227,13 +230,6 @@ Citizen.CreateThread( function()
 			end
 			WarMenu.Display()
 		end
-		if WarMenu.IsMenuOpened('fixdog') then
-			if WarMenu.Button("Fix your pet ( Buy another one )") then
-				TriggerServerEvent('kcrp:sellpet')
-				WarMenu.CloseMenu()
-			end
-		end
-			WarMenu.Display()
 		Citizen.Wait(0)
 	until false
 end)
