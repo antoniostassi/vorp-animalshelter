@@ -247,7 +247,7 @@ Citizen.CreateThread(function()
 			end
 		end
 
-		if IsControlJustReleased(0, keys['B']) then
+		if IsControlJustReleased(0, keys['J']) then
 			pressLeft = GetGameTimer()
 			pressTime = pressTime + 1
 		end
